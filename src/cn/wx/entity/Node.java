@@ -1,4 +1,4 @@
-package cn.wx;
+package cn.wx.entity;
 
 import cn.wx.map.Point;
 

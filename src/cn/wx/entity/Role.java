@@ -1,4 +1,4 @@
-package cn.wx;
+package cn.wx.entity;
 
 public enum Role {
 	KeyPoint,

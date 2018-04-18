@@ -1,5 +1,9 @@
 package cn.wx.encryption;
 
+
+/**
+ *AES加密 CBC模式 
+ */
 public class AESEncryption {
 	
 	
