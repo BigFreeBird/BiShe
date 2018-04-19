@@ -6,7 +6,6 @@ import cn.wx.decryption.AES128DE;
 import cn.wx.factory.S_BoxFactory;
 import cn.wx.util.BitOperation;
 import cn.wx.util.TypeConversion;
-import cn.wx.util.Util;
 /**
  *AES加密 CBC模式 
  *AES128中一个分组长128bit即16个字节(byte)，密钥长度也是128bit，采用10轮加密
@@ -53,15 +52,10 @@ public class AES128EN{
 			System.arraycopy(groups.get(i), 0, group, 0, 16);
 			//group和vector异或
 			group=BitOperation.bitXOR(group, vector);
-			Util.outBytes(group,"异或后\t");
 			group=subBytes(group);
-			Util.outBytes(group,"加密步骤"+(i+1)+".1");
 			group=shiftRows(group);
-			Util.outBytes(group,"加密步骤"+(i+1)+".2");
 			group=mixColumns(group);
-			Util.outBytes(group,"加密步骤"+(i+1)+".3");
 			group=addRoundKey(group);
-			Util.outBytes(group,"加密步骤"+(i+1)+".4");
 			vector=group.clone();
 			System.arraycopy(group, 0, cipherText, i*16, 16);
 		}
@@ -123,13 +117,10 @@ public class AES128EN{
 		AES128EN en=new AES128EN("我是随机字符串，我要去生成初始化向量和口令了");
 		byte[]bs="我是明文，我要被加密了，好害怕".getBytes();
 		byte[] cipher=en.Encryption(bs);
-		Util.outBytes(bs, "明\t文");
-		Util.outBytes(cipher, "密 \t文");
 		byte []key=en.getKey();
 		byte []initVector=en.getInitVector();
 		AES128DE de=new AES128DE(key, initVector);
 		byte[] plain=de.DeCrypt(cipher);
-		Util.outBytes(plain, "完全解密后\t");
 		System.out.println(new String(plain));
 	}
 }

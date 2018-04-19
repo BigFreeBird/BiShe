@@ -6,7 +6,6 @@ import cn.wx.encryption.S_Box;
 import cn.wx.factory.S_BoxFactory;
 import cn.wx.util.BitOperation;
 import cn.wx.util.TypeConversion;
-import cn.wx.util.Util;
 
 public class AES128DE {
 	private byte[] key=new byte[16];
@@ -24,15 +23,10 @@ public class AES128DE {
 			byte[] group=groups.get(i);
 			byte []tv=group.clone();
 			group=deAddRoundKey(group);//两次XOR操作，还原位原字节数组
-			Util.outBytes(group, "解密步骤"+(i+1)+".4");
 			group=deMixColumns(group);
-			Util.outBytes(group, "解密步骤"+(i+1)+".3");
 			group=deShiftRows(group);
-			Util.outBytes(group, "解密步骤"+(i+1)+".2");
 			group=deSubBytes(group);
-			Util.outBytes(group, "解密步骤"+(i+1)+".1");
 			group=BitOperation.bitXOR(group, vector);
-			Util.outBytes(group, "解密后\t");
 			vector=tv;
 			System.arraycopy(group, 0, plainText, i*16, 16);
 		}

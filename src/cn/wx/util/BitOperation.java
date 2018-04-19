@@ -65,16 +65,4 @@ public class BitOperation {
 		}
 		System.out.println(byString);
 	}
-	public static void main(String[] args) {
-		byte[] bs=new byte[4];
-		bs[0]=23;
-		bs[1]=56;
-		bs[2]=17;
-		bs[3]=111;
-		String string=new String(bs);
-		System.out.println(string.getBytes().length);
-		System.out.println(string);
-		bs=string.getBytes();
-		Util.outBytes(bs, "out\t");
-	}
 }
