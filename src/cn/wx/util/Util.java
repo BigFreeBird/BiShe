@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import cn.wx.map.CrossRoads;
 import cn.wx.map.Point;
@@ -88,5 +89,11 @@ public class Util {
 		double dy=p1.getY()-p2.getY();
 		return Math.sqrt(dx*dx+dy*dy);
 	}
-	//计算最短路径
+	public static void outBytes(byte[] bytes,String name) {
+		String msg = name;
+		for(byte e:bytes) {
+			msg=msg+"\t"+TypeConversion.byteToInt(e);
+		}
+		System.out.println(msg);
+	}
 }

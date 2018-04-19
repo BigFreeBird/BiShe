@@ -4,18 +4,20 @@ package cn.wx.util;
 
 public class BitOperation {
 	/**
+	 * src中最左侧的i位在des中位置 是(srcloc+i)%32
 	 * 位移后，最后的位移动到前面
-	 * @param num
+	 * @param src
 	 * @param i
 	 * @return
 	 */
-	public static int leftMove(int num,int i) {
-		int des=num;
+	public static int leftMove(int src,int i) {
+		i=i%32;
+		int des=src;
 		des=des<<i;
 		//des中的前i个位置是num中最后i个位置
-		for(int desloc=i-1;desloc>0;desloc--) {
-			int srcloc=32+desloc-i;
-			des=setBit(des, desloc, getBit(num,srcloc));
+		for(int srcloc=31;srcloc>31-i;srcloc--) {
+			int desloc=(srcloc+i)%32;
+			des=setBit(des, desloc, getBit(src, srcloc));
 		}
 		return des;
 		//保存最后num个
@@ -48,7 +50,31 @@ public class BitOperation {
 	
 	public static byte[] bitXOR(byte [] src,byte[] mask) {
 		for(int i=0;i<src.length;i++)
-			src[i]=(byte) (src[i]^mask[1]);
+			src[i]=(byte) (src[i]^mask[i]);
 		return src;
+	}
+	public static void toByte(int v) {
+		String byString="";
+		for(int i=31;i>=0;i--) {
+			if((i+1)%4==0)
+				byString+=" ";
+			if(getBit(v, i))
+				byString+="1";
+			else
+				byString+="0";
+		}
+		System.out.println(byString);
+	}
+	public static void main(String[] args) {
+		byte[] bs=new byte[4];
+		bs[0]=23;
+		bs[1]=56;
+		bs[2]=17;
+		bs[3]=111;
+		String string=new String(bs);
+		System.out.println(string.getBytes().length);
+		System.out.println(string);
+		bs=string.getBytes();
+		Util.outBytes(bs, "out\t");
 	}
 }
