@@ -1,6 +1,6 @@
 package cn.wx.factory;
 
-import cn.wx.encryption.S_Box;
+import cn.wx.security.S_Box;
 
 public class S_BoxFactory {
 	private static S_Box box;

@@ -1,8 +1,7 @@
-package cn.wx.encryption;
+package cn.wx.security;
 
 import java.util.ArrayList;
 
-import cn.wx.decryption.AES128DE;
 import cn.wx.factory.S_BoxFactory;
 import cn.wx.util.BitOperation;
 import cn.wx.util.TypeConversion;
@@ -112,15 +111,5 @@ public class AES128EN{
 //	4 AddRoundKey密钥加密
 	private byte[] addRoundKey(byte[] group){
 		return BitOperation.bitXOR(group, key);
-	}
-	public static void main(String[] args) {
-		AES128EN en=new AES128EN("我是随机字符串，我要去生成初始化向量和口令了");
-		byte[]bs="我是明文，我要被加密了，好害怕".getBytes();
-		byte[] cipher=en.Encryption(bs);
-		byte []key=en.getKey();
-		byte []initVector=en.getInitVector();
-		AES128DE de=new AES128DE(key, initVector);
-		byte[] plain=de.DeCrypt(cipher);
-		System.out.println(new String(plain));
 	}
 }

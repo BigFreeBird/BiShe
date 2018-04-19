@@ -1,8 +1,7 @@
-package cn.wx.decryption;
+package cn.wx.security;
 
 import java.util.ArrayList;
 
-import cn.wx.encryption.S_Box;
 import cn.wx.factory.S_BoxFactory;
 import cn.wx.util.BitOperation;
 import cn.wx.util.TypeConversion;

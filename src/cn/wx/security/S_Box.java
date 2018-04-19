@@ -1,4 +1,4 @@
-package cn.wx.encryption;
+package cn.wx.security;
 
 import java.io.BufferedReader;
 import java.io.File;
